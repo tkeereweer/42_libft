@@ -10,10 +10,10 @@ char	*ft_strrchr(const char *s, int c)
 	while (s[i] != '\0')
 	{
 		if (s[i] == c)
-			out = &s[i];
+			out = (char *) &s[i];
 		i++;
 	}
 	if (s[i] == c)
-		out = &s[i];
+		out = (char *) &s[i];
 	return (out);
 }
