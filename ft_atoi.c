@@ -14,7 +14,7 @@ int	ft_atoi(const char *str)
 		sign *= -1;
 		i++;
 	}
-	while(ft_isdigit(str[i]) == 1)
+	while (ft_isdigit(str[i]) == 1)
 	{
 		res = (res * 10) + (str[i] - '0');
 		i++;
