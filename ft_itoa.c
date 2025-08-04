@@ -11,7 +11,7 @@ void	ft_chrcat(char *dst, const char c)
 	dst[i + 1] = '\0';
 }
 
-void	int_to_str(char *out, unsigned int nb)
+static void	int_to_str(char *out, unsigned int nb)
 {
 	if (nb < 10)
 	{

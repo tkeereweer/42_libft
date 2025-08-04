@@ -24,7 +24,7 @@ void	ft_strcpy(char *dst, const char *src)
 	dst[i] = src[i];
 }
 
-void	strsplit(char **arr, char *tmp, char const *s, char c)
+static void	strsplit(char **arr, char *tmp, char const *s, char c)
 {
 	int		i;
 	int		j;
