@@ -6,13 +6,13 @@
 /*   By: mkeerewe <mkeerewe@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 16:42:49 by mkeerewe          #+#    #+#             */
-/*   Updated: 2025/08/19 16:42:50 by mkeerewe         ###   ########.fr       */
+/*   Updated: 2025/08/20 13:05:39 by mkeerewe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_chrcat(char *dst, const char c)
+static void	ft_chrcat(char *dst, const char c)
 {
 	int	i;
 
