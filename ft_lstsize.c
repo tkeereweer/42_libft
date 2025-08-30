@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkeerewe <mkeerewe@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/19 16:43:13 by mkeerewe          #+#    #+#             */
-/*   Updated: 2025/08/30 15:32:33 by mkeerewe         ###   ########.fr       */
+/*   Created: 2025/08/23 15:42:22 by mkeerewe          #+#    #+#             */
+/*   Updated: 2025/08/30 11:22:36 by mkeerewe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+int	ft_lstsize(t_list *lst)
 {
-	char			*out;
-	unsigned int	i;
+	t_list	*curr;
+	int		cnt;
 
-	if (s == (void *) 0)
-		return ((void *) 0);
-	out = (char *) malloc((ft_strlen(s) + 1) * sizeof(char));
-	if (out == (void *) 0)
-		return (out);
-	i = 0;
-	while (s[i] != '\0')
+	if (lst == (void *) 0)
+		return (0);
+	curr = lst;
+	cnt = 1;
+	while (curr->next != (void *) 0)
 	{
-		out[i] = f(i, s[i]);
-		i++;
+		cnt++;
+		curr = curr->next;
 	}
-	out[i] = '\0';
-	return (out);
+	return (cnt);
 }

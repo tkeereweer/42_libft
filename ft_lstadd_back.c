@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkeerewe <mkeerewe@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/19 16:43:13 by mkeerewe          #+#    #+#             */
-/*   Updated: 2025/08/30 15:32:33 by mkeerewe         ###   ########.fr       */
+/*   Created: 2025/08/23 15:42:22 by mkeerewe          #+#    #+#             */
+/*   Updated: 2025/08/30 11:29:11 by mkeerewe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	char			*out;
-	unsigned int	i;
+	t_list	*last_node;
 
-	if (s == (void *) 0)
-		return ((void *) 0);
-	out = (char *) malloc((ft_strlen(s) + 1) * sizeof(char));
-	if (out == (void *) 0)
-		return (out);
-	i = 0;
-	while (s[i] != '\0')
+	if (*lst == (void *) 0)
 	{
-		out[i] = f(i, s[i]);
-		i++;
+		*lst = new;
+		return ;
 	}
-	out[i] = '\0';
-	return (out);
+	last_node = ft_lstlast(*lst);
+	last_node->next = new;
 }

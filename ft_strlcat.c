@@ -1,33 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkeerewe <mkeerewe@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/19 16:42:18 by mkeerewe          #+#    #+#             */
-/*   Updated: 2025/08/30 15:56:06 by mkeerewe         ###   ########.fr       */
+/*   Created: 2025/08/21 17:09:09 by mkeerewe          #+#    #+#             */
+/*   Updated: 2025/08/23 15:05:59 by mkeerewe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
+	size_t	len_src;
+	size_t	len_dst;
 	size_t	i;
-	char	*str_s1;
-	char	*str_s2;
+	size_t	j;
 
-	if (n < 1)
-		return (0);
+	len_src = ft_strlen(src);
+	if (dstsize == 0)
+		return (len_src);
+	len_dst = ft_strlen(dst);
 	i = 0;
-	str_s1 = (char *) s1;
-	str_s2 = (char *) s2;
-	while (i < n)
-	{
-		if ((unsigned char) str_s1[i] != (unsigned char) str_s2[i])
-			return ((unsigned char) str_s1[i] - (unsigned char) str_s2[i]);
+	j = 0;
+	if (len_dst > dstsize)
+		return (len_src + dstsize);
+	while (dst[i] != '\0')
 		i++;
+	while (src[j] != '\0' && i + j < dstsize - 1)
+	{
+		dst[i + j] = src[j];
+		j++;
 	}
-	return ((unsigned char) str_s1[i - 1] - (unsigned char) str_s2[i - 1]);
+	while (i + j < dstsize)
+		dst[i + j++] = '\0';
+	return (len_dst + len_src);
 }

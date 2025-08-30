@@ -1,33 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkeerewe <mkeerewe@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/19 16:42:18 by mkeerewe          #+#    #+#             */
-/*   Updated: 2025/08/30 15:56:06 by mkeerewe         ###   ########.fr       */
+/*   Created: 2025/08/23 15:11:40 by mkeerewe          #+#    #+#             */
+/*   Updated: 2025/08/30 15:15:07 by mkeerewe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	size_t	i;
-	char	*str_s1;
-	char	*str_s2;
+	size_t	len_n;
+	char	*ptr;
 
-	if (n < 1)
-		return (0);
 	i = 0;
-	str_s1 = (char *) s1;
-	str_s2 = (char *) s2;
-	while (i < n)
+	len_n = ft_strlen(needle);
+	if (len_n == 0)
+		return ((char *) haystack);
+	if (len == 0)
+		return ((void *) 0);
+	while (haystack[i] != '\0' && i < len && len - i >= len_n)
 	{
-		if ((unsigned char) str_s1[i] != (unsigned char) str_s2[i])
-			return ((unsigned char) str_s1[i] - (unsigned char) str_s2[i]);
+		if (haystack[i] == needle[0])
+		{
+			if (ft_strncmp(&haystack[i], needle, len - i) == 0)
+			{
+				ptr = (char *) &haystack[i];
+				return (ptr);
+			}
+		}
 		i++;
 	}
-	return ((unsigned char) str_s1[i - 1] - (unsigned char) str_s2[i - 1]);
+	return ((void *) 0);
 }

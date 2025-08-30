@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkeerewe <mkeerewe@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/19 16:43:13 by mkeerewe          #+#    #+#             */
-/*   Updated: 2025/08/30 15:32:33 by mkeerewe         ###   ########.fr       */
+/*   Created: 2025/08/23 15:42:22 by mkeerewe          #+#    #+#             */
+/*   Updated: 2025/08/30 15:48:16 by mkeerewe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	char			*out;
-	unsigned int	i;
+	t_list	*curr;
 
-	if (s == (void *) 0)
-		return ((void *) 0);
-	out = (char *) malloc((ft_strlen(s) + 1) * sizeof(char));
-	if (out == (void *) 0)
-		return (out);
-	i = 0;
-	while (s[i] != '\0')
+	if (lst == (void *) 0 || !f)
+		return ;
+	curr = lst;
+	while (curr->next != (void *) 0)
 	{
-		out[i] = f(i, s[i]);
-		i++;
+		f(curr->content);
+		curr = curr->next;
 	}
-	out[i] = '\0';
-	return (out);
+	f(curr->content);
 }

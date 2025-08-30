@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkeerewe <mkeerewe@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/19 16:43:13 by mkeerewe          #+#    #+#             */
-/*   Updated: 2025/08/30 15:32:33 by mkeerewe         ###   ########.fr       */
+/*   Created: 2025/08/23 15:42:22 by mkeerewe          #+#    #+#             */
+/*   Updated: 2025/08/30 15:46:59 by mkeerewe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	char			*out;
-	unsigned int	i;
+	t_list	*curr;
+	t_list	*next_node;
 
-	if (s == (void *) 0)
-		return ((void *) 0);
-	out = (char *) malloc((ft_strlen(s) + 1) * sizeof(char));
-	if (out == (void *) 0)
-		return (out);
-	i = 0;
-	while (s[i] != '\0')
+	if (lst == (void *) 0 || *lst == (void *) 0 || !del)
+		return ;
+	curr = *lst;
+	while (curr->next != (void *) 0)
 	{
-		out[i] = f(i, s[i]);
-		i++;
+		next_node = curr->next;
+		ft_lstdelone(curr, del);
+		curr = next_node;
 	}
-	out[i] = '\0';
-	return (out);
+	ft_lstdelone(curr, del);
+	*lst = (void *) 0;
 }

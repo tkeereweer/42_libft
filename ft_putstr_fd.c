@@ -6,7 +6,7 @@
 /*   By: mkeerewe <mkeerewe@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 16:42:45 by mkeerewe          #+#    #+#             */
-/*   Updated: 2025/08/19 16:42:46 by mkeerewe         ###   ########.fr       */
+/*   Updated: 2025/08/30 15:30:04 by mkeerewe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	write(fd, s, ft_strlen(s));
+	if (s != (void *) 0)
+		write(fd, s, ft_strlen(s));
 }

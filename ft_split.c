@@ -6,7 +6,7 @@
 /*   By: mkeerewe <mkeerewe@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 16:42:49 by mkeerewe          #+#    #+#             */
-/*   Updated: 2025/08/20 13:05:39 by mkeerewe         ###   ########.fr       */
+/*   Updated: 2025/08/30 15:39:56 by mkeerewe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ char	**ft_split(char const *s, char c)
 	char	**arr;
 	char	*tmp;
 
+	if (s == (void *) 0)
+		return ((void *) 0);
 	arr = (char **) malloc((ft_strlen(s) / 2 + 2) * sizeof(char *));
 	if (arr == (void *) 0)
 		return (arr);

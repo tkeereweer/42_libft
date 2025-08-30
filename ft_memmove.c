@@ -6,31 +6,11 @@
 /*   By: mkeerewe <mkeerewe@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 16:42:18 by mkeerewe          #+#    #+#             */
-/*   Updated: 2025/08/21 15:14:22 by mkeerewe         ###   ########.fr       */
+/*   Updated: 2025/08/30 15:31:04 by mkeerewe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-int	ft_memoverlap(char *mem_src, char *mem_dst, size_t len)
-{
-	size_t	i;
-	size_t	j;
-
-	i = 0;
-	while (i < len)
-	{
-		j = 0;
-		while (j < len)
-		{
-			if (mem_src + i == mem_dst + j)
-				return (1);
-			j++;
-		}
-		i++;
-	}
-	return (0);
-}
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
@@ -45,8 +25,8 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	str_src = (char *) src;
 	while (i < len)
 	{
-		if (ft_memoverlap(str_src, str_dst, len) == 1)
-			break ;
+		// if (&str_src[i] >= str_dst && &str_src[i] < str_dst + len)
+		// 	continue ;
 		str_dst[i] = str_src[i];
 		i++;
 	}
