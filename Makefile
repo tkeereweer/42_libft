@@ -31,8 +31,8 @@ SRCS = ft_atoi.c \
 	ft_strlcpy.c \
 	ft_strtrim.c \
 	ft_strlcat.c \
-	ft_strnstr.c \
-	ft_lstadd_back.c \
+	ft_strnstr.c
+B_SRCS = ft_lstadd_back.c \
 	ft_lstadd_front.c \
 	ft_lstclear.c \
 	ft_lstdelone.c \
@@ -45,6 +45,7 @@ SRCS = ft_atoi.c \
 INC = libft.h
 
 OBJS = $(SRCS:.c=.o)
+B_OBJS = $(B_SRCS:.c=.o)
 
 NAME = libft.a
 
@@ -53,6 +54,9 @@ CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
+bonus: $(B_OBJS) $(NAME)
+	ar rcs $(NAME) $(B_OBJS)
+
 $(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 
@@ -60,11 +64,11 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -I $(INC) -c $< -o $@
 
 clean:
-	rm -f $(OBJS)
+	rm -rf $(OBJS) $(B_OBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -rf $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus
