@@ -40,7 +40,7 @@ B_SRCS = ft_lstadd_back.c \
 	ft_lstlast.c \
 	ft_lstnew.c \
 	ft_lstsize.c \
-# 	ft_lstmap.c 
+	ft_lstmap.c 
 
 INC = libft.h
 
@@ -54,7 +54,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
-bonus: $(B_OBJS) $(NAME)
+bonus: $(NAME) $(B_OBJS)
 	ar rcs $(NAME) $(B_OBJS)
 
 $(NAME): $(OBJS)

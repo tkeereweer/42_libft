@@ -6,7 +6,7 @@
 /*   By: mkeerewe <mkeerewe@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 15:11:40 by mkeerewe          #+#    #+#             */
-/*   Updated: 2025/08/30 15:15:07 by mkeerewe         ###   ########.fr       */
+/*   Updated: 2025/09/12 14:32:34 by mkeerewe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	{
 		if (haystack[i] == needle[0])
 		{
-			if (ft_strncmp(&haystack[i], needle, len - i) == 0)
+			if (ft_strncmp(&haystack[i], needle, len_n) == 0)
 			{
 				ptr = (char *) &haystack[i];
 				return (ptr);
