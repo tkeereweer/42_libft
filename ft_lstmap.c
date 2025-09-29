@@ -6,7 +6,7 @@
 /*   By: mkeerewe <mkeerewe@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 15:42:22 by mkeerewe          #+#    #+#             */
-/*   Updated: 2025/09/22 17:41:41 by mkeerewe         ###   ########.fr       */
+/*   Updated: 2025/09/29 18:43:42 by mkeerewe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 		return (new_node);
 	new_lst = new_node;
 	curr = curr->next;
-	while (curr->next != (void *) 0)
+	while (curr != (void *) 0)
 	{
 		new_node = ft_lstnew(f(curr->content));
 		if (new_node == (void *) 0)
@@ -37,6 +37,5 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 		ft_lstadd_back(&new_lst, new_node);
 		curr = curr->next;
 	}
-	ft_lstadd_back(&new_lst, new_node);
 	return (new_lst);
 }
