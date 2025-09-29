@@ -42,8 +42,6 @@ B_SRCS = ft_lstadd_back.c \
 	ft_lstsize.c \
 	ft_lstmap.c 
 
-INC = libft.h
-
 OBJS = $(SRCS:.c=.o)
 B_OBJS = $(B_SRCS:.c=.o)
 
@@ -61,7 +59,7 @@ $(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -I $(INC) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -rf $(OBJS) $(B_OBJS)
