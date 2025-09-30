@@ -32,15 +32,15 @@ SRCS = ft_atoi.c \
 	ft_strtrim.c \
 	ft_strlcat.c \
 	ft_strnstr.c
-B_SRCS = ft_lstadd_back.c \
-	ft_lstadd_front.c \
-	ft_lstclear.c \
-	ft_lstdelone.c \
-	ft_lstiter.c \
-	ft_lstlast.c \
-	ft_lstnew.c \
-	ft_lstsize.c \
-	ft_lstmap.c 
+B_SRCS = ft_lstadd_back_bonus.c \
+	ft_lstadd_front_bonus.c \
+	ft_lstclear_bonus.c \
+	ft_lstdelone_bonus.c \
+	ft_lstiter_bonus.c \
+	ft_lstlast_bonus.c \
+	ft_lstmap_bonus.c \
+	ft_lstnew_bonus.c \
+	ft_lstsize_bonus.c
 
 OBJS = $(SRCS:.c=.o)
 B_OBJS = $(B_SRCS:.c=.o)
@@ -52,8 +52,8 @@ CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
-bonus: $(NAME) $(B_OBJS)
-	ar rcs $(NAME) $(B_OBJS)
+bonus: $(OBJS) $(B_OBJS)
+	ar rcs $(NAME) $(OBJS) $(B_OBJS)
 
 $(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
